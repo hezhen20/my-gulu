@@ -1,0 +1,23 @@
+{
+  "name": "gulu",
+  "version": "0.0.1",
+  "description": "这是一个UI框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hezhen20/my-gulu.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "hezhen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hezhen20/my-gulu/issues"
+  },
+  "homepage": "https://github.com/hezhen20/my-gulu#readme"
+}
