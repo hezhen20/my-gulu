@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/hezhen20/my-gulu/issues"
   },
-  "homepage": "https://github.com/hezhen20/my-gulu#readme"
+  "homepage": "https://github.com/hezhen20/my-gulu#readme",
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
 }
