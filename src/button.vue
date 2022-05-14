@@ -22,6 +22,9 @@ export default {
       type: String,
       default: function() {
         return 'left'
+      },
+      validator (value) {
+        return value === 'left' || value === 'right'
       }
     }
   }
