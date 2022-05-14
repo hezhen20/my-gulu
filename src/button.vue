@@ -1,8 +1,6 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <svg v-if="icon" class="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <g-icon v-if="icon" :name="icon" class="icon"></g-icon>
     <!-- slot 无法加类名，用 div 包起来 -->
     <div class="content">
       <slot>按钮</slot>
