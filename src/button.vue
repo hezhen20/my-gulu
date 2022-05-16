@@ -1,6 +1,7 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <g-icon v-if="icon" :name="icon" class="icon"></g-icon>
+    <g-icon v-if="icon && !loading" :name="icon" class="icon"></g-icon>
+    <g-icon name="loading icon" v-if="loading" class="loading" />
     <!-- slot 无法加类名，用 div 包起来 -->
     <div class="content">
       <slot>按钮</slot>
@@ -24,11 +25,21 @@ export default {
       validator (value) {
         return value === 'left' || value === 'right'
       }
+    },
+    loading: {
+      type: Boolean,
+      default: function() {
+        return false
+      }
     }
   }
 }
 </script>
 <style lang="scss">
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -55,6 +66,9 @@ export default {
   &.icon-right {
     > .content { order: 1; }
     > .icon { order: 2; margin-left: .2em; }
+  }
+  .loading {
+    animation: spin 2s infinite linear;
   }
 }
 </style>
