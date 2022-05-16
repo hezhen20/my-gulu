@@ -1,7 +1,7 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
     <g-icon v-if="icon && !loading" :name="icon" class="icon"></g-icon>
-    <g-icon name="loading icon" v-if="loading" class="loading" />
+    <g-icon name="loading" v-if="loading" class="loading" />
     <!-- slot 无法加类名，用 div 包起来 -->
     <div class="content">
       <slot>按钮</slot>
