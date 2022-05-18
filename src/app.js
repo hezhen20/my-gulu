@@ -16,6 +16,12 @@ new Vue({
   data: {
     loading1: true,
     loading2: false,
+    message:'hello'
+  },
+  methods: {
+    handleInput(e) {
+      console.log(e);
+    }
   }
 })
 

@@ -1,14 +1,15 @@
 <template>
   <div class="wrapper" :class="{ error }">
+    <!-- :value 和 @change 就能实现 v-model，因为 v-model就是二者的语法糖 -->
     <input
       :value="value"
       type="text"
       :disabled="disabled"
       :readonly="readonly"
-      @change="$emit('change', $event)"
-      @input="$emit('input', $event)"
-      @focus="$emit('focus', $event)"
-      @blur="$emit('blur', $event)"
+      @change="$emit('change', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @focus="$emit('focus', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
     />
     <template v-if="error">
       <icon name="error" class="icon-error"></icon>

@@ -55,7 +55,7 @@
       </g-button-group>
     </div>
     <div class="box">
-      <g-input value="输入"></g-input>
+      <g-input v-model="message" @change="handleInput"></g-input>
       <g-input value="disabled" disabled></g-input>
       <g-input value="readonly" readonly></g-input>
     </div>
