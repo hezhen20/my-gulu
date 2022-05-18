@@ -30,30 +30,38 @@
     }
   </style>
   <style>
-    .icon {
-      /* 宽高和字一样 */
-      height: 1em;
-      width: 1em;
+    .box {
+      margin: 20px;
     }
   </style>
 </head>
 <body>
   <div id="app">
     <!-- 使用 -->
-    <g-button icon="settings">
-      设置
-    </g-button>
-    <g-button icon="settings" icon-position="left" :loading="loading1">
-      设置
-    </g-button>
-    <g-button icon="settings" icon-position="right" :loading="loading2">
-      设置
-    </g-button>
-    <g-button-group>
-      <g-button icon="left">上一页</g-button>
-      <g-button>更多</g-button>
-      <g-button icon="right" icon-position="right">下一页</g-button>
-    </g-button-group>
+    <div class="box">
+      <g-button icon="settings">
+        设置
+      </g-button>
+      <g-button icon="settings" icon-position="left" :loading="loading1">
+        设置
+      </g-button>
+      <g-button icon="settings" icon-position="right" :loading="loading2">
+        设置
+      </g-button>
+      <g-button-group>
+        <g-button icon="left">上一页</g-button>
+        <g-button>更多</g-button>
+        <g-button icon="right" icon-position="right">下一页</g-button>
+      </g-button-group>
+    </div>
+    <div class="box">
+      <g-input value="输入"></g-input>
+      <g-input value="disabled" disabled></g-input>
+      <g-input value="readonly" readonly></g-input>
+    </div>
+    <div class="box">
+      <g-input value="错误提示" error="error message"></g-input>
+    </div>
   </div>
   <!-- index.html中只引入 app.js -->
   <script src="./src/app.js"></script>
