@@ -38,7 +38,15 @@ new Vue({
   },
   methods: {
     showToast() {
-      this.$toast('hello')
+      this.$toast('一个从上面来的toast提示', {
+        autoCloseDelay: 1,
+        closeButton: {
+          text: '关闭',
+          callback() {
+            console.log('关闭的回调');
+          }
+        }
+      })
     }
   }
 })

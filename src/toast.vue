@@ -1,7 +1,9 @@
 <template>
   <div class="toast">
     <slot></slot>
-  </div>  
+    <div class="line"></div>
+    <span v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+  </div>
 </template>
 
 <script>
@@ -19,6 +21,15 @@ export default {
       default: function() {
         return 5
       }
+    },
+    closeButton: {
+      type: Object,
+      default: function() {
+        return {
+          text: '关闭',
+          callback: undefined
+        }
+      }
     }
   },
   mounted() {
@@ -30,8 +41,16 @@ export default {
   },
   methods: {
     close() {
-      this.$el.remove()
-      this.$destroy()
+      this.$el.remove()   // 移除元素
+      this.$destroy()     // 彻底销毁组件
+    },
+    onClickClose() {
+      // 先关闭 toast
+      this.close()
+      // 如果用户传了callback, 并且是函数，那就执行用户自定义的回调
+      if (this.closeButton && typeof this.closeButton.callback === 'function') {
+        this.closeButton.callback()
+      }
     }
   }
 }
@@ -50,5 +69,11 @@ export default {
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
     padding: 0 16px;
+  }
+  .line {
+    height: 100%;
+    border-left: 1px solid #ccc;
+    padding-left: 1em;
+    margin-left: 1em;
   }
 </style>
