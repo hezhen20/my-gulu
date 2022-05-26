@@ -88,6 +88,19 @@ export default {
   $font-size: 14px;
   $toast-min-height: 40px;
   $toast-bg: rgba(0, 0, 0, 0.75); // 渐变
+  $animation-duration: 300ms;
+  @keyframes fade-up {
+    0% {opacity: 0; transform: translateX(-50%) translateY(100%);}
+    100% {opacity: 1; transform: translateX(-50%) translateY(0%);}
+  }
+  @keyframes fade-down {
+    0% {opacity: 0; transform: translateX(-50%) translateY(-100%);}
+    100% {opacity: 1; transform: translateX(-50%) translateY(0%);}
+  }
+  @keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
   .toast {
     font-size: $font-size; min-height: $toast-min-height; line-height: 1.8;
     color: white;
@@ -108,12 +121,15 @@ export default {
     }
     &.position-top {
       top: 0; transform: translateX(-50%);  // 水平居中
+      animation: fade-down $animation-duration;
     }
     &.position-bottom {
       bottom: 0;  transform: translateX(-50%);
+      animation: fade-up $animation-duration;
     }
     &.position-middle {
       top: 50%; transform: translate(-50%, -50%);   // transform 需考虑兼容性
+      animation: fade-in $animation-duration;
     }
   }
 </style>
