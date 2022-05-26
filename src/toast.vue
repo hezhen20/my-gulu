@@ -6,7 +6,34 @@
 
 <script>
 export default {
-  name: 'GuluToast'
+  name: 'GuluToast',
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: function() {
+        return true
+      }
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: function() {
+        return 5
+      }
+    }
+  },
+  mounted() {
+    if (this.autoClose) {
+      setTimeout(() => {
+        this.close()
+      }, this.autoCloseDelay * 1000);
+    }
+  },
+  methods: {
+    close() {
+      this.$el.remove()
+      this.$destroy()
+    }
+  }
 }
 </script>
 
