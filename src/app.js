@@ -38,8 +38,9 @@ new Vue({
   },
   methods: {
     showToast() {
-      this.$toast('一个从上面来的toast提示', {
-        autoCloseDelay: 1,
+      this.$toast('<i>多文本测试多文本测试多文本测试多文本测试多文本测试多文本测试</i>', {
+        enableHtml: true,
+        autoCloseDelay: 5,
         closeButton: {
           text: '关闭',
           callback() {
