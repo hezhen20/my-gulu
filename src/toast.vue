@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="wrapper">
+  <div class="toast" ref="wrapper" :class="toastClasses">
     <slot v-if="!enableHtml"></slot>
     <div v-else v-html="$slots.default[0]"></div>
     <div class="line" ref="line"></div>
@@ -39,6 +39,15 @@ export default {
         return false
       }
     },
+    position: {
+      type: String,
+      default: function() {
+        return 'top'
+      },
+      validator(value) {
+        return ['top', 'bottom', 'middle'].indexOf(value) >= 0
+      }
+    }
   },
   mounted() {
     if (this.autoClose) {
@@ -50,6 +59,13 @@ export default {
       // 解决竖线因为父元素设置min-height了而高度为 0 的问题
       this.$refs.line.style.height = `${this.$refs.wrapper.getBoundingClientRect().height}px`
     })
+  },
+  computed: {
+    toastClasses(){
+      return {
+        [`position-${this.position}`]: true
+      }
+    }
   },
   methods: {
     close() {
@@ -75,7 +91,7 @@ export default {
   .toast {
     font-size: $font-size; min-height: $toast-min-height; line-height: 1.8;
     color: white;
-    position: fixed; top: 0; left: 50%; transform: translateX(-50%);  // 水平居中
+    position: fixed; left: 50%;
     display: flex;  align-items: center;    // 垂直居中
     background: $toast-bg;
     border-radius: 4px;
@@ -89,6 +105,15 @@ export default {
       border-left: 1px solid #ccc;
       padding-left: 1em;
       margin-left: 1em;
+    }
+    &.position-top {
+      top: 0; transform: translateX(-50%);  // 水平居中
+    }
+    &.position-bottom {
+      bottom: 0;  transform: translateX(-50%);
+    }
+    &.position-middle {
+      top: 50%; transform: translate(-50%, -50%);   // transform 需考虑兼容性
     }
   }
 </style>
