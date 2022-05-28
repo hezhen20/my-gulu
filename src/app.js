@@ -14,6 +14,11 @@ import Content from './content.vue'
 import Sider from './sider.vue'
 import Toast from './toast.vue'
 import plugin from './plugin.js'
+import TabsBody from './tabs-body.vue'
+import TabsHead from './tabs-head.vue'
+import TabsItem from './tabs-item.vue'
+import TabsPane from './tabs-pane.vue'
+import Tabs from './tabs.vue'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -26,19 +31,23 @@ Vue.component('g-footer', Footer)
 Vue.component('g-content', Content)
 Vue.component('g-sider', Sider)
 Vue.component('g-toast', Toast)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
 
 Vue.use(plugin)
 
 new Vue({
   el: '#app',
   data: {
-    loading1: true,
-    loading2: false,
-    message:'hello'
+    selectedTab: 'IT'
   },
   methods: {
     showToast() {
-      this.$toast('<i>多文本测试多文本测试多文本测试多文本测试多文本测试多文本测试</i>', {
+      this.$toast(`<i>这是一个toast提示</i>`, {
+        position: 'middle',
         enableHtml: true,
         autoCloseDelay: 5,
         closeButton: {
