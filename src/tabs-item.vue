@@ -38,13 +38,14 @@ export default {
   methods: {
     xxx() {
       // 发送
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  $blue: #2490ff;
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;   // item 之间的间隔，两个字
@@ -53,7 +54,8 @@ export default {
     display: flex;
     align-items: center;
     &.active {
-      background: red;
+      color: $blue;
+      // border-bottom: 2px solid $blue;   // 直接给 item 加border-bottom实现tab的下划线，但是效果不好，tab文字会上移
     }
   }
 </style>

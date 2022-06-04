@@ -33,7 +33,16 @@ export default {
     }
   },
   mounted () {
-    this.eventBus.$emit('update:selected', this.selected)
+    // 初始化时，通过 eventBus 通知各组件哪个 tab-item 被选中了
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'GuluTabsHead') {
+        vm.$children.forEach(item => {
+          if (item.$options.name === 'GuluTabsItem' && item.name === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, item)
+          }
+        })
+      }
+    })
   }
 }
 </script>
