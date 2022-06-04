@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="classes">
+  <div class="tabs-item" @click="onClick" :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
   computed: {
     classes() {
       return {
-        active: this.active
+        active: this.active,
+        disabled: this.disabled
       }
     }
   },
@@ -36,7 +37,10 @@ export default {
     })
   },
   methods: {
-    xxx() {
+    onClick() {
+      if (this.disabled) {
+        return
+      }
       // 发送
       this.eventBus.$emit('update:selected', this.name, this)
     }
@@ -46,6 +50,7 @@ export default {
 
 <style lang="scss" scoped>
   $blue: #2490ff;
+  $disabled-text-color: grey;
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;   // item 之间的间隔，两个字
@@ -56,6 +61,9 @@ export default {
     &.active {
       color: $blue;
       // border-bottom: 2px solid $blue;   // 直接给 item 加border-bottom实现tab的下划线，但是效果不好，tab文字会上移
+    }
+    &.disabled {
+      color: $disabled-text-color;
     }
   }
 </style>
