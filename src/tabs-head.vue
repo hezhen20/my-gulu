@@ -34,6 +34,7 @@ export default {
     // 子元素选择器
     >.actions-wrapper {
       margin-left: auto;
+      padding: 0 1em;
     }
     >.line {
       position: absolute;
