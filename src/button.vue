@@ -1,5 +1,5 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
+  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <g-icon v-if="icon && !loading" :name="icon" class="icon"></g-icon>
     <g-icon name="loading" v-if="loading" class="loading"></g-icon>
     <!-- slot 无法加类名，用 div 包起来 -->
