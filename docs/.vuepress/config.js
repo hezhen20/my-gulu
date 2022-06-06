@@ -20,7 +20,12 @@ module.exports = {
       {
         title: '组件',
         children: [
-          '/components/button'
+          '/components/button',
+          '/components/input',
+          '/components/toast',
+          '/components/grid',
+          '/components/layout',
+          '/components/tabs',
         ],
       },
     ]
