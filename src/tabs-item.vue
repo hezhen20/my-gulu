@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
   $blue: #2490ff;
-  $disabled-text-color: grey;
+  $disabled-text-color: #bfbfbf;
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;   // item 之间的间隔，两个字
@@ -64,6 +64,7 @@ export default {
     }
     &.disabled {
       color: $disabled-text-color;
+      cursor:  not-allowed;
     }
   }
 </style>
